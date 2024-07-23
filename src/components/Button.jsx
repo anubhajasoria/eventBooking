@@ -7,7 +7,7 @@ const Button = ({ classname, title, onPress }) => {
       className={`rounded-full bg-button p-4  ${classname}`}
       onPress={onPress}
     >
-      <Text className="text-white text-center">{title}</Text>
+      <Text className="text-white text-center font-medium">{title}</Text>
     </Pressable>
   );
 };

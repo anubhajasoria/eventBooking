@@ -2,12 +2,18 @@ import { View, Image, ImageBackground, Text, Dimensions } from "react-native";
 import { Button, CustomBottomSheet, Header } from "../components";
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Calendar, Location, Frame, Money } from "../../assets/svg/";
+import { Calendar, Location, Frame, Money } from "../../assets/svg";
+import { LinearGradient } from "expo-linear-gradient";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 
-const Event = () => {
+const Event = ({ route }) => {
   const [open, setOpen] = useState(true);
+  const navigation = useNavigation();
+  const claimed = route?.params;
+  console.log(claimed);
   return (
-    <SafeAreaView className="flex-1 bg-white" edges={["bottom"]}>
+    <SafeAreaView className="flex-1" edges={[]}>
       <Header />
       <View className="flex-1 bg-white flex-col justify-between">
         <View>
@@ -19,11 +25,12 @@ const Event = () => {
         {/* <Header /> */}
         {/* <Text>d</Text> */}
         <CustomBottomSheet
+          alwaysOpen={true}
           visible={open}
-          onClose={() => {
-            setOpen(false);
-            console.log("press");
-          }}
+          // onClose={() => {
+          //   setOpen(false);
+          //   console.log("press");
+          // }}
           ScrollableComponent={
             <View className="p-8 gap-y-8">
               <View>
@@ -77,7 +84,23 @@ const Event = () => {
                 <Text className="text-xl font-medium mb-2">
                   Find this event
                 </Text>
-                <View className="bg-slate-500 h-[175] rounded-2xl"></View>
+                <LinearGradient
+                  colors={[
+                    "#dce0e6",
+                    "#ffffff",
+                    "#dce0e6",
+                    "#ffffff",
+                    "#dce0e6",
+                  ]}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
+                  className="bg-slate-500 h-[175] rounded-2xl items-center justify-center flex"
+                >
+                  <FontAwesome name="lock" size={30} color={"#6C63FF"} />
+                  <Text className="mt-2 text-base text-button font-medium">
+                    Join to unlock
+                  </Text>
+                </LinearGradient>
               </View>
             </View>
           }
@@ -95,11 +118,13 @@ const Event = () => {
               }}
             >
               <Button
-                title="Buy Tickets"
-                classname={"w-full"}
+                title={
+                  claimed?.claimed ? "Waiting for Approval" : "Buy Tickets"
+                }
+                classname={`w-full ${claimed?.claimed ? "bg-orange-400" : ""}`}
                 onPress={() => {
                   setOpen(true);
-                  console.log("press");
+                  navigation.navigate("Questionnaire");
                 }}
               />
             </View>

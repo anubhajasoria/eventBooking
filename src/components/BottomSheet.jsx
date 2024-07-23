@@ -26,13 +26,13 @@ const CustomBottomSheet = ({
     <Modalize
       ref={bottomsheet}
       // adjustToContentHeight
-      // alwaysOpen={alwaysOpen ? DEVICE_HEIGHT * 0.54 : 0}
+      alwaysOpen={alwaysOpen ? DEVICE_HEIGHT * 0.54 : 0}
       HeaderComponent={HeaderComponent}
       onClose={onClose}
       childrenStyle={childrenStyles}
       FooterComponent={FooterComponent}
-      modalHeight={modal_height ? modal_height : DEVICE_HEIGHT * 0.6}
-      // snapPoint={DEVICE_HEIGHT * 0.54}
+      modalHeight={modal_height ? modal_height : DEVICE_HEIGHT * 0.8}
+      snapPoint={DEVICE_HEIGHT * 0.54}
       overlayStyle={{ backgroundColor: "rgba(0,0,0,0)" }}
       modalStyle={{
         backgroundColor: "white",
