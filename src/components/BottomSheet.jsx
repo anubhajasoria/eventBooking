@@ -18,7 +18,7 @@ const CustomBottomSheet = ({
     if (visible) {
       bottomsheet.current?.open();
     } else {
-      bottomsheet.current?.close();
+      alwaysOpen? "":bottomsheet.current?.close();
     }
   }, [visible]);
 
@@ -32,7 +32,7 @@ const CustomBottomSheet = ({
       childrenStyle={childrenStyles}
       FooterComponent={FooterComponent}
       modalHeight={modal_height ? modal_height : DEVICE_HEIGHT * 0.8}
-      snapPoint={DEVICE_HEIGHT * 0.54}
+      // snapPoint={DEVICE_HEIGHT * 0.54}
       overlayStyle={{ backgroundColor: "rgba(0,0,0,0)" }}
       modalStyle={{
         backgroundColor: "white",

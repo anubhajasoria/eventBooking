@@ -32,7 +32,7 @@ const Event = ({ route }) => {
           //   console.log("press");
           // }}
           ScrollableComponent={
-            <View className="p-8 gap-y-8">
+            <View className="p-8 gap-y-8 z-10">
               <View>
                 <Text className="text-3xl font-semibold text-text mb-1">
                   Art show 🎨

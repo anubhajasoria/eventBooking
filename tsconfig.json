@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "src/screens/Event.jsx"  ]
+, "src/screens/Event.jsx", "src/screens/Questionnaire.jsx", "src/components/BottomSheet.jsx", "src/components/Header.jsx", "src/components/Button.jsx"  ]
 }
